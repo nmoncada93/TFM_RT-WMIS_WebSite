@@ -1,4 +1,4 @@
-// [A] Pinta cuadricula =================================================
+// [A] Pinta cuadricula =========================================================
 function paintGrid(gridData, dynamicData, svg) {
   svg.selectAll(".grid-cell")
       .data(gridData)
@@ -16,7 +16,7 @@ function paintGrid(gridData, dynamicData, svg) {
       .style("stroke-width", 0.3);
 }
 
-// [B] Busca coincidencia de datos ========================================
+// [B] Busca coincidencia de datos ================================================
 function findMatchingCell(dynamicData, gridCell) {
   const tolerance = 0.01; // Tolerancia
   return dynamicData.flatMap(group => group.data).find(cell =>
@@ -25,7 +25,7 @@ function findMatchingCell(dynamicData, gridCell) {
   );
 }
 
-// [C] Genera colores según los valores ====================================
+// [C] Genera colores según los valores ============================================
 function getColor(value) {
   if (value === null || value === 0) return "transparent"; // No pinta
   if (value < 0.2) return "#0837d0"; // Azul oscuro
@@ -39,7 +39,7 @@ function getColor(value) {
 //-----------------------------------VISUAL ELEMENTS -----------------------------------
 //--------------------------------------------------------------------------------------
 
-// [D] Dibuja reglas de coordenadas =============================================
+// [D] Dibuja reglas de coordenadas =================================================
 function coordinateAxes(projection, svg, step = 10) {
   // [D.1] Dibuja lineas de latitud (horizontales)
   for (let lat = -90; lat <= 90; lat += step) {

@@ -1,4 +1,4 @@
-// [A] Pinta cuadricula ============================================
+// [A] Pinta cuadricula ========================================================
 function paintGrid(gridData, dynamicData, svg) {
   svg.selectAll(".grid-cell")
       .data(gridData)

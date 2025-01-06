@@ -1,9 +1,9 @@
 import * as echarts from 'echarts';
 
-// [A] Variable global para almacenar el grafico activo
+// [A] Variable global para almacenar el grafico activo ====================================
 let activeChart = null;
 
-// [B] Resetea grafico actual
+// [B] Resetea grafico actual ==============================================================
 export function resetChart() {
   if (activeChart) {
     activeChart.dispose();  // Elimina el gráfico de Echarts
@@ -12,7 +12,7 @@ export function resetChart() {
   }
 }
 
-// [C] Para seleccionar la columna correcta segun indice
+// [C] Para seleccionar la columna correcta segun indice ====================================
 function getIndexColumn(item, index) {
   switch (index) {
     case 'sphi': return item[5];  // SPHI L1 (columna 6)
@@ -24,7 +24,7 @@ function getIndexColumn(item, index) {
   }
 }
 
-// [C.1] Determina etiqueta del eje Y segun el indice seleccionado
+// [C.1] Determina etiqueta del eje Y segun el indice seleccionado ==========================
 function getYAxisLabel(index) {
   switch (index) {
     case 'sphi':
@@ -38,7 +38,7 @@ function getYAxisLabel(index) {
   }
 }
 
-// [D] Renderiza grafico segun el indice seleccionado
+// [D] Renderiza grafico segun el indice seleccionado ========================================
 export function renderChart(data, station, index) {
   const chartDom = document.getElementById('pastChart');
 
@@ -67,7 +67,7 @@ export function renderChart(data, station, index) {
   // Mapea datos filtrados para obtener los valores correctos segun el indice
   const scatterData = filteredData.map(item => [item[0], getIndexColumn(item, index)]);
 
-  // [D.7] Configuración del gráfico
+  // Configuración del gráfico
   const option = {
     title: { text: `Index: ${index.toUpperCase()} for station: ${station}` },
     tooltip: {  //Al pasar cursor por encima da información extra
@@ -102,18 +102,17 @@ export function renderChart(data, station, index) {
       symbolSize: 4
     }],
 
-        // [1] Zoom
+        // Zoom
         dataZoom: [
           { type: 'slider', start: 0, end: 100},  // Zoom con barra deslizante
           { type: 'inside', start: 0, end: 100, zoomOnMouseWheel: true, moveOnMouseMove: true, moveOnTouch: true  }   // Zoom con scroll del ratón
       ],
-      // [2] Botón de exportación
+      // Botón de exportación
       toolbox: {
         show: true,
 
         feature: {
           saveAsImage: {
-            //show: true,
             name: 'Past_Records_Index_Chart',
             title: 'Export Chart as PNG',
             type: 'png',
@@ -131,7 +130,7 @@ export function renderChart(data, station, index) {
         }
       }
   };
-  // [D.8] Renderiza el gráfico
+  // Renderiza el gráfico
   // Configura el gráfico con las opciones y fuerza el ajuste inicial
   myChart.setOption(option);
   myChart.resize(); // Fuerza el tamaño adecuado en la carga inicial

@@ -1,6 +1,7 @@
 # Install RT-WMIS PROJECT
 
-`git clone https://github.com/nmoncada93/RT-WMIS-WEB-PROJECT.git`
+`git clone https://github.com/nmoncada93/TFM_RT-WMIS_WebSite.git`
+
 `cd RT-WMIS-WEB-PROJECT`
 
 
@@ -23,8 +24,10 @@
   `python -m flask run`
 
 
-  Ctrl + Shift + P --> select: Python: Select Interpreter
+  Ctrl + Shift + P --> select: Python: Select Interpreter (Windows)
+  Cmd  + Shift + P --> select: Python: Select Interpreter (MAC)
 
+  Usually the route is: .venv/bin/python
 # UOC Boilerplate
 
 UOC Boilerplate is a starter template for the HTML and CSS Tools courses from the [Master's Program in Multimedia Applications](https://estudis.uoc.edu/ca/masters-universitaris/aplicacions-multimedia/presentacio) and the [Master's Program in Web App and Website Development](https://estudis.uoc.edu/ca/masters-universitaris/desenvolupament-llocs-aplicacions-web/presentacio) at the [Universitat Oberta de Catalunya](https://www.uoc.edu). It aims to provide a basic, modern frontend web development starter pack based on Parcel and including a Sass compiler, an ES6 transpiler, minifiers, an image transformer, and development tools.

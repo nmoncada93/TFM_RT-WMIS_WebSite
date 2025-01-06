@@ -1,4 +1,4 @@
-// [A] Función para obtener el año y el día del año (DoY) a partir de una fecha
+// [A] Función para obtener el año y el día del año (DoY) a partir de una fecha ================
 export function getSelectedDate(dateString) {
   const selectedDate = new Date(dateString);
   const year = selectedDate.getFullYear();
@@ -9,7 +9,7 @@ export function getSelectedDate(dateString) {
   return { year, doy };
 }
 
-// [B] Descomprime .unxz
+// [B] Descomprime .unxz =======================================================================
 export function decompressFiles(year, doy) {
   const decompressUrl = `http://127.0.0.1:5000/api/indexPR/unxz-files/${year}/${doy}`;
   console.log("Requesting for unzip:", decompressUrl);
@@ -33,7 +33,7 @@ export function decompressFiles(year, doy) {
     });
 }
 
-// [C] Coordina proceso de descompresion y obtencion de datos
+// [C] Coordina proceso de descompresion y obtencion de datos ===================================
 export function processIndexData(year, doy, fetchSphiData, fetchRotiData) {
   decompressFiles(year, doy)
     .then(() => {

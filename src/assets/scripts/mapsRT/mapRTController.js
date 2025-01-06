@@ -1,4 +1,4 @@
-// [A] Funcion para obtener datos crudos del backend ---------------------------
+// [A] Funcion para obtener datos RAW del backend =====================================
 // [A.1] Fetch para SPHI
 async function fetchRawSphiData() {
   if (isFetching.sphi) {
@@ -56,7 +56,7 @@ async function fetchRawS4Data() {
   }
 }
 
-// [B] Funcion para filtrar y estructurar los datos ---------------------------
+// [B] Funcion para filtrar y estructurar los datos ========================================
 // [B.1] Filtro para SPHI
 function filterSphiData(rawData) {
   const latestTime = Math.max(...rawData.map(group => group.TIME));
@@ -129,8 +129,7 @@ function filterS4Data(rawData) {
   ];
 }
 
-
-// [C] Funcion principal para obtener y procesar los datos --------------------
+// [C] Funcion principal para obtener y procesar los datos ======================================
 // [C.1] Para SPHI
   export async function fetchIgpSphiData() {
   try {

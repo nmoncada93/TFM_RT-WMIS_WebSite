@@ -1,6 +1,6 @@
 import { renderChart } from './indexRTChart.js';
 
-// [A] Variables Globales
+// [A] Variables Globales =========================================================
 let realTimeData = {
   sphi: null,  // Almacena el JSON de sphi.tmp
   roti: null   // Almacena el JSON de roti.tmp
@@ -11,7 +11,7 @@ let isFetching = false;
 let lastDataHash = null;
 let fetchInterval = null;
 
-// [B] Obtiene datos de sphi.tmp =====================================
+// [B] Obtiene datos de sphi.tmp ==================================================
 async function fetchSphiData() {
   const url = `http://127.0.0.1:5000/api/indexRT/read-sphi`;
   console.log("Fetch Request Enviada a Sphi");
@@ -38,7 +38,7 @@ async function fetchSphiData() {
   }
 }
 
-// [C] Obtiene datos de roti.tmp =====================================
+// [C] Obtiene datos de roti.tmp ===================================================
 async function fetchRotiData() {
 
   const url = `http://127.0.0.1:5000/api/indexRT/read-roti`;
@@ -83,7 +83,7 @@ function updateStationSelector(data) {
   });
 }
 
-// [F] Marca boton activo y desactiva el resto ========================================
+// [F] Marca boton activo y desactiva el resto ============================================
 function setActiveButton(button) {
   const buttons = document.querySelectorAll(".primaryRTBtn");
   buttons.forEach(btn => btn.classList.remove("active-button"));
@@ -155,7 +155,7 @@ async function checkAndUpdateData() {
   isFetching = false;
 }
 
-// [I] Iniciar el fetch automático REAL-TIME ==============================================
+// [I] Iniciar el fetch automático REAL-TIME ================================================
 function startAutoFetch() {
   if (!fetchInterval) {
     fetchInterval = setInterval(checkAndUpdateData, 10000);
@@ -163,7 +163,7 @@ function startAutoFetch() {
   }
 }
 
-// [J] Detiene autofetch REAL-TIME =========================================================
+// [J] Detiene autofetch REAL-TIME ===========================================================
 function stopAutoFetch() {
   if (fetchInterval) {
     clearInterval(fetchInterval);
@@ -219,7 +219,7 @@ function resetChart() {
 //=======================================================================================
 
 
-// [N] Captura estacion renderizasi hay índice activo
+// [N] Captura estacion renderizasi hay índice activo ==========================================
 document.getElementById("stationSelector").addEventListener("change", function () {
   detectSelectedStation();
   showIndexButtons();
@@ -234,7 +234,7 @@ document.getElementById("stationSelector").addEventListener("change", function (
   }
 });
 
-// [M1] Render Chart for SPHI Index
+// [M1] Render Chart for SPHI Index ============================================================
 document.getElementById("sphiButton").addEventListener("click", function () {
   stopAutoFetch();
   if (realTimeData.sphi && selectedStation) {
@@ -249,7 +249,7 @@ document.getElementById("sphiButton").addEventListener("click", function () {
   }
 });
 
-// [M2] Render Chart for ROTI Index
+// [M2] Render Chart for ROTI Index ============================================================
 document.getElementById("rotiButton").addEventListener("click", function () {
   stopAutoFetch();
   if (realTimeData.roti && selectedStation) {
@@ -264,7 +264,7 @@ document.getElementById("rotiButton").addEventListener("click", function () {
   }
 });
 
-// [M3] Render Chart for S4 Index
+// [M3] Render Chart for S4 Index ==============================================================
 document.getElementById("s4Button").addEventListener("click", function () {
   stopAutoFetch();
   if (realTimeData.roti && selectedStation) {
@@ -279,7 +279,7 @@ document.getElementById("s4Button").addEventListener("click", function () {
   }
 });
 
-// [O] Evento para ejecutar el fetch
+// [O] Evento para ejecutar el fetch ============================================================
 document.getElementById("stationSelector").addEventListener("focus", function () {
   console.log("Evento FOCUS del selector de estaciones");
   fetchSphiData();

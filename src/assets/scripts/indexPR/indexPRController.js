@@ -1,7 +1,7 @@
 import { renderChart, resetChart } from './indexPRChart.js';
 import { getSelectedDate, processIndexData } from './indexPRUnxz.js';
 
-// [A] Variables Globales
+// [A] Variables Globales ============================================
 let pastRecordsData = {
   sphi: null,  // Almacena el JSON de sphi.tmp
   roti: null   // Almacena el JSON de roti.tmp
@@ -27,7 +27,7 @@ async function fetchSphiData(year, doy) {
     return data;
   } catch (error) {
     console.error("Error during sphi.tmp request:", error);
-    handleNoData("No data available for the selected date. Please try again later or choose another date!");
+    handleNoData("No data available for the selected date. Please try again, later or choose another date!");
   }
 }
 
@@ -52,7 +52,7 @@ async function fetchRotiData(year, doy) {
     return data;
   } catch (error) {
     console.error("Error during roti.tmp request:", error);
-    handleNoData("No data available for the selected date. Please try again later or choose another date!");
+    handleNoData("No data available for the selected date. Please try again, later or choose another date!");
   }
 }
 
@@ -124,14 +124,14 @@ function showIndexButtons() {
   }
 }
 
-// [I] Mostrar/ocultar spinner de carga
+// [I] Mostrar/ocultar spinner de carga ====================================================
 function handlerSpinner(show) {
   const spinner = document.getElementById('loadingMessagePRindex');
   spinner.style.display = show ? 'flex' : 'none';
   console.log(show ? "Spinner mostrado" : "Spinner oculto");
 }
 
-// [J] Función para manejar errores de datos o solicitudes fallidas
+// [J] Función para manejar errores de datos o solicitudes fallidas ========================
 function handleNoData(message = "No data available for the selected date.") {
   const noDataMessage = document.getElementById('noDataMessagePRindex');
   handlerSpinner(false);
@@ -145,7 +145,7 @@ function handleNoData(message = "No data available for the selected date.") {
 //==============================  LISTENERS =============================================
 //=======================================================================================
 
-// [B] Captura estacion renderizasi hay índice activo
+// [K] Captura estacion, renderizasi hay índice activo =====================================
 document.getElementById("dateInput").addEventListener("change", function () {
   const { year, doy } = getSelectedDate(this.value);
   console.log("Fecha seleccionada:", this.value, "Año:", year, "Día del año (DoY):", doy);
@@ -156,10 +156,10 @@ document.getElementById("dateInput").addEventListener("change", function () {
   processIndexData(year, doy, fetchSphiData, fetchRotiData);
 });
 
-// [G] Reset UI cuando el calendario obtiene foco
+// [L] Reset UI cuando el calendario obtiene foco ==========================================
 document.getElementById("dateInput").addEventListener("change", resetUI);
 
-// [I] Captura estacion y renderiza si hay indice activo
+// [M] Captura estacion y renderiza si hay indice activo ===================================
 document.getElementById("pastStationSelector").addEventListener("change", function () {
   detectSelectedStation();
   showIndexButtons();
@@ -171,7 +171,7 @@ document.getElementById("pastStationSelector").addEventListener("change", functi
   }
 });
 
-// [L1] Renderiza SPHI
+// [N1] Renderiza SPHI =====================================================================
 document.getElementById("sphiIndexPRBtn").addEventListener("click", function () {
   if (pastRecordsData.sphi && selectedStation) {
     activeIndex = 'sphi';
@@ -183,7 +183,7 @@ document.getElementById("sphiIndexPRBtn").addEventListener("click", function () 
   }
 });
 
-// [L2] Renderiza ROTI
+// [N2] Renderiza ROTI =====================================================================
 document.getElementById("rotiIndexPRBtn").addEventListener("click", function () {
   if (pastRecordsData.roti && selectedStation) {
     activeIndex = 'roti';
@@ -195,7 +195,7 @@ document.getElementById("rotiIndexPRBtn").addEventListener("click", function () 
   }
 });
 
-// [L3] Renderiza S4
+// [N3] Renderiza S4 =======================================================================
 document.getElementById("s4IndexPRBtn").addEventListener("click", function () {
   if (pastRecordsData.roti && selectedStation) {
     activeIndex = 's4';
